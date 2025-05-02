@@ -1,15 +1,14 @@
-const AWS = require("aws-sdk");
+import AWS from "aws-sdk";
+
 const dynamodb = new AWS.DynamoDB.DocumentClient();
 
-exports.handler = async (event) => {
-  const { id, nombre, precio } = event;
-
+export const handler = async (event) => {
   const params = {
     TableName: process.env.TABLE_NAME,
     Item: {
-      id: id,
-      nombre: nombre,
-      precio: precio
+      id: "1",
+      nombre: "Producto demo",
+      precio: 10.5
     }
   };
 
@@ -17,7 +16,7 @@ exports.handler = async (event) => {
     await dynamodb.put(params).promise();
     return {
       statusCode: 200,
-      body: `Producto ${nombre} guardado en DynamoDB`
+      body: "Producto guardado en DynamoDB"
     };
   } catch (err) {
     return {
