@@ -2,7 +2,13 @@ const AWS = require("aws-sdk");
 const dynamodb = new AWS.DynamoDB.DocumentClient();
 
 exports.handler = async (event) => {
-  const { id, nombre, precio } = event;
+  let body = event.body;
+
+  if (typeof body === "string") {
+    body = JSON.parse(body);
+  }
+
+  const { id, nombre, precio } = body;
 
   const params = {
     TableName: process.env.TABLE_NAME,

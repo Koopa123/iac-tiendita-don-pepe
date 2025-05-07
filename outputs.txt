@@ -1,0 +1,4 @@
+api_gateway_url = "https://458d91x4d2.execute-api.us-east-2.amazonaws.com/prod/productos"
+cloudfront_url = "https://d3h1g3fta1cum9.cloudfront.net"
+dynamodb_table_name = "Productos"
+lambda_function_guardar_producto = "guardar_producto"
